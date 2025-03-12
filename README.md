@@ -1,2 +1,2 @@
 # United-Games-Source
-United Games Source Code
+The Source Code of the United Games Project
