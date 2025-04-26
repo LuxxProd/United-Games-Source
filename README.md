@@ -8,6 +8,8 @@ The United Games Project is created to connect people in a fun environment, safe
 This Code is public to improve functionality, for contributers to contribute and educational purposes only.
 It must not be used as a template or to abuse any content nor the content featured in the project.
 
+The files should contain everything including the Scene to test every function in the Code. (Items & Props)
+
 # Content
 This Project could contain:
 + Guns & Swords
