@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b75v5mm8y8lbo"]
+[gd_scene load_steps=8 format=3 uid="uid://b75v5mm8y8lbo"]
 
 [ext_resource type="Script" uid="uid://cxycjq8tg5wme" path="res://character_body_3d.gd" id="1_a202f"]
+[ext_resource type="Script" uid="uid://bsvhpqipkcbfb" path="res://control.gd" id="2_noarx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_noarx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a202f"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_a202f"]
 
@@ -20,12 +23,32 @@ script = ExtResource("1_a202f")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("CapsuleShape3D_noarx")
 
-
 [node name="Rotation_Helper" type="Node3D" parent="CharacterBody3D"]
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Rotation_Helper"]
 
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("CapsuleMesh_a202f")
+
+[node name="Control" type="Control" parent="CharacterBody3D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_noarx")
+
+[node name="Button" type="Button" parent="CharacterBody3D/Control"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Host Game"
+
+[node name="Button2" type="Button" parent="CharacterBody3D/Control"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 94.0
+offset_bottom = 71.0
+text = "Join Game"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
