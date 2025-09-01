@@ -26,4 +26,4 @@ This Project does not contain:
 - Nudity
 - Integrated Multiplayer Communication
 
-(A seperate project rated specifically for an adult audiance is planned, but has by far not been in focus yet.)
+(A separate project rated specifically for an adult audience is planned, but has by far not been in focus yet.)
