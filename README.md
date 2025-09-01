@@ -23,7 +23,7 @@ This Project could contain:
 This Project does not contain:
 - Blood
 - Gore
-- Nudity
+- Explicit Nudity
 - Integrated Multiplayer Communication
 
 (A separate project rated specifically for an adult audience is planned, but has by far not been in focus yet.)
