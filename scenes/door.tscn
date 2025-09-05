@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://t7ibx724h3hs"]
+
+[ext_resource type="Script" uid="uid://csu8o4jmclqhf" path="res://scripts/door.gd" id="1_hpvv5"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_83dcw"]
+points = PackedVector3Array(0.5, 0.5, 0.1, 0.5, 0.5, -0.1, -0.5, 0.5, 0.1, 0.5, -0.5, 0.1, 0.5, -0.5, -0.1, -0.5, 0.5, -0.1, -0.5, -0.5, 0.1, -0.5, -0.5, -0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uvdjg"]
+size = Vector3(1, 1, 0.2)
+
+[node name="door" type="Area3D"]
+script = ExtResource("1_hpvv5")
+metadata/_custom_type_script = "uid://1tb33i5q0tam"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_83dcw")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("BoxMesh_uvdjg")
+skeleton = NodePath("../..")
