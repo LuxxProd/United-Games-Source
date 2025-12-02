@@ -2,7 +2,7 @@
 The Source Code of the United Games Project
 
 # About
-The United Games Project is created to connect people in a fun environment, safe for 12-16+ y/o with affordable content which profits will be shared with whoever contributed content for the project.
+The United Games Project is created to connect people in a fun environment, safe for 12+ y/o with affordable content which profits will be shared with whoever contributed content for the project.
 
 # Rules
 This Code is public to improve functionality, for contributers to contribute and educational purposes only.
