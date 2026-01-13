@@ -42,6 +42,8 @@ func _on_MultiplayerSpawner_spawned(node):
 
 func _on_host_button_pressed() -> void:
 	host_game()
-
+	$Control.visible = false
+	
 func _on_join_button_pressed() -> void:
 	join_game("127.0.0.1")
+	$Control.visible = false

@@ -1,0 +1,117 @@
+[gd_scene load_steps=11 format=3 uid="uid://bw5s4bs41v6ss"]
+
+[ext_resource type="Script" uid="uid://bt78opwffnhvb" path="res://scripts/car.gd" id="1_f47dj"]
+[ext_resource type="Script" uid="uid://1tb33i5q0tam" path="res://scripts/interactable_3d.gd" id="2_d5ml3"]
+[ext_resource type="PackedScene" uid="uid://t7ibx724h3hs" path="res://scenes/door.tscn" id="3_2pdkd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_06lh1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7822p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uoj53"]
+size = Vector3(2.5, 2, 3.8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7822p"]
+size = Vector3(2.5, 0.6, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uoj53"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_k61xc"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_2pdkd"]
+properties/0/path = NodePath(".:steering")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:position")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath(".:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="VehicleBody3D" type="VehicleBody3D"]
+script = ExtResource("1_f47dj")
+
+[node name="Interactable3D" type="Area3D" parent="."]
+script = ExtResource("2_d5ml3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 1.5)
+shape = SubResource("BoxShape3D_06lh1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_7822p")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.05, 2.5, 1.19209e-07)
+shape = SubResource("BoxShape3D_uoj53")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_7822p")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.55, 0, 0, 0, 0.6, 0, 0, 0, 4, 0, 1, 0)
+mesh = SubResource("BoxMesh_uoj53")
+
+[node name="VehicleWheel3D" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.8, 1)
+use_as_steering = true
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D"]
+transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_k61xc")
+
+[node name="VehicleWheel3D2" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.8, -1)
+use_as_traction = true
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D2"]
+transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_k61xc")
+
+[node name="VehicleWheel3D3" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, 1)
+use_as_steering = true
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D3"]
+transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_k61xc")
+
+[node name="VehicleWheel3D4" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.8, -1)
+use_as_traction = true
+suspension_stiffness = 50.0
+damping_compression = 2.0
+damping_relaxation = 2.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VehicleWheel3D4"]
+transform = Transform3D(-4.37114e-08, -0.2, 0, 1, -8.74228e-09, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_k61xc")
+
+[node name="door" parent="." instance=ExtResource("3_2pdkd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.2, 2, -0.6)
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_2pdkd")
+
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="body_shape_exited" from="." to="." method="_on_body_shape_exited"]
+[connection signal="area_entered" from="Interactable3D" to="." method="_on_interactable_3d_area_entered"]
+[connection signal="area_shape_entered" from="Interactable3D" to="." method="_on_interactable_3d_area_shape_entered"]
+[connection signal="body_entered" from="Interactable3D" to="." method="_on_interactable_3d_body_entered"]
+[connection signal="body_shape_entered" from="Interactable3D" to="." method="_on_interactable_3d_body_shape_entered"]
+[connection signal="interacted_with" from="Interactable3D" to="." method="_on_interactable_3d_interacted_with"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

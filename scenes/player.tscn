@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dw5o47u7xqf0n"]
+
+[ext_resource type="Script" uid="uid://cxycjq8tg5wme" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://cn4eywa2023q0" path="res://scripts/interaction_ray_cast_3d.gd" id="2_g2els"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i3pqv"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_g2els"]
+properties/0/path = NodePath(".:rotation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Rotation_Helper:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["players"]]
+script = ExtResource("1_onrkg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="Rotation_Helper" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Rotation_Helper"]
+
+[node name="InteractionRayCast3D" type="RayCast3D" parent="Rotation_Helper"]
+target_position = Vector3(0, 0, -6)
+script = ExtResource("2_g2els")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_i3pqv")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_g2els")
